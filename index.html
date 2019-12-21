@@ -1,27 +1,32 @@
 <!Doctype HTML>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <title>Birthday Countdown</title>
-  <link rel="stylesheet" href="style.css">
-  <!--Expose Moment.js and moment-precise-range-plugin to this file-->
-  <script type="text/javascript" src="./node_modules/moment/moment.js"></script>
-  <script type="text/javascript" src="./node_modules/moment-precise-range-plugin/moment-precise-range.js"></script>
+    <meta charset="UTF-8">
+    <title>Birthday Countdown</title>
+    <link rel="stylesheet" href="style.css">
+    <!--Expose Moment.js and moment-precise-range-plugin to this file-->
+    <script type="text/javascript" src="./node_modules/moment/moment.js"></script>
+    <script type="text/javascript" src="./node_modules/moment-precise-range-plugin/moment-precise-range.js"></script>
 </head>
+
 <body>
-  <div class="countdown"></div>
-  <script type="text/javascript">
-    window.birthday = prompt('What is your birthday? MM/DD/YYYY')
-    // invoke displayAge once
-    displayAge()
-    // invoke displayAge on an interval once a second
-    setInterval(displayAge, 1000)
-    function displayAge(){
-      /* 
-      Use moment() to create a new moment object from the present time
-      Fix this function to display someone's exact age
-      */
-      document.querySelector('.countdown').innerHTML = moment()
-    }
-  </script>
+    <div class="countdown"></div>
+    <script type="text/javascript">
+        window.birthday = prompt('What is your birthday? MM/DD/YYYY')
+            // invoke displayAge once
+        displayAge()
+            // invoke displayAge on an interval once a second
+        setInterval(displayAge, 1000)
+
+        function displayAge() {
+            /* 
+            Use moment() to create a new moment object from the present time
+            Fix this function to display someone's exact age
+            */
+            var result = moment.preciseDiff(moment(),
+                moment(window.birthday, 'MM/DD/YYYY'));
+            document.querySelector('.countdown').innerHTML = result;
+        }
+    </script>
 </body>
